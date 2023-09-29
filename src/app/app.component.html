@@ -1,0 +1,177 @@
+<header class="header">
+  <div class="container header__container">
+    <div class="header__logo">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+    <nav class="menu">
+      <ul class="menu__list">
+        <li>
+          <a class="menu__link" (click)="scrollTo(selectMacaroon)">Пироженки</a>
+        </li>
+        <li>
+          <a class="menu__link" (click)="scrollTo(aboutUs)">О нас</a>
+        </li>
+        <li>
+          <a class="menu__link"  (click)="scrollTo(orderElement)">Оформить заказ</a>
+        </li>
+      </ul>
+    </nav>
+    <div class="connection">
+      {{footerValues.phone | customPhone}}
+    </div>
+    <div class="menu__hidden" id="menu__hidden">
+      <svg class="xmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <path d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"/>
+      </svg>
+      <ul class="menu__hidden-list">
+        <li>
+          <a class="menu__link" (click)="scrollTo(selectMacaroon)">Пироженки</a>
+        </li>
+        <li>
+          <a class="menu__link" (click)="scrollTo(aboutUs)">О нас</a>
+        </li>
+        <li>
+          <a class="menu__link"  (click)="scrollTo(orderElement)">Оформить заказ</a>
+        </li>
+      </ul>
+    </div>
+    <div class="menu__icon" id="menu__icon">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="main">
+  <div class="container main__container">
+    <div class="main__info">
+      <h1 class="main__title">
+        Мягкие французские
+        пироженки Macaroons
+      </h1>
+      <div class="main__text">
+        Побалуйте себя и своих близких самыми вкусными и ароматными домашними пироженками Macaroon!
+      </div>
+      <div class="main__action">
+        <button class="btn main__btn" (click)="scrollTo(selectMacaroon)">Выбрать макарун</button>
+      </div>
+    </div>
+    <div class="main__image">
+      <img class="main__image-img" src="assets/images/macaroons.png" alt="Macaroons">
+    </div>
+  </div>
+</div>
+
+<section class="description" id="description" #aboutUs>
+  <div class="container description__container">
+    <h2 class="description__title">
+      Мы печём для вас
+      вкуснейшие макаруны
+      уже более 10 лет
+    </h2>
+    <div class="description__text">
+      Все пироженки мы готовим только из натуральных и качественных продуктов, без консервантов,
+      ароматизаторов, красителей. Используем в приготовлении сливочное масло 82,5%, без дрожжей,
+      маргарина, разрыхлителей и улучшителей муки.
+    </div>
+    <div class="description__image">
+      <img src="assets/images/big-macaroon.png" alt="Big macaroon">
+    </div>
+    <div class="description__cards">
+      <advantage *ngFor="let description of descriptions; index as i" [index]="i+1" [description]="description"></advantage>
+    </div>
+  </div>
+</section>
+
+<section class="selection" id="selection" #selectMacaroon>
+  <div class="container selection__container">
+    <h2 class="selection__title">Выберите свой макарун</h2>
+    <div class="selection__macaroons">
+      <product *ngFor="let product of products;"  [product]="product" (addToCartEvent)="addToCart($event, orderElement)"></product>
+    </div>
+  </div>
+</section>
+
+<section class="zakaz" id="zakazat" #orderElement>
+  <div class="container zakaz__container">
+    <div class="zakaz__image">
+      <img src="assets/images/big-macaroons.png" alt="Macaroons" class="zakaz__macaroon">
+    </div>
+    <div class="zakaz__description">
+      <h2 class="zakaz__title">Закажите макарун!</h2>
+      <div class="zakaz__text">
+        Выберите понравившийся макарун, заполните форму и ожидайте звонка нашего пекаря!
+      </div>
+      <form class="zakaz__form" action="#" #siForm="ngForm">
+        <img src="assets/images/клубника1.png" alt="Strawberry" class="straw-one">
+        <label class="zakaz__label-text" for="zakaz">Ваш выбор</label>
+        <div>
+          <input type="text" placeholder="Напишите, что хотите заказать..." class="zakaz__pole" id="zakaz" name="product"
+                 required #product="ngModel"
+                 [class]="{'border-danger' : product.invalid && (product.dirty || product.touched), 'text-danger' : product.invalid && (product.dirty || product.touched)}"
+                 [(ngModel)]="formValues.productTitle">
+
+          <div class="text-danger" *ngIf="product.invalid && (product.dirty || product.touched) && product.errors?.['required']">
+            Product is required
+          </div>
+        </div>
+
+        <label class="zakaz__label-text" for="name">Дополнительные данные для заказа</label>
+        <div>
+          <input type="text" placeholder="Ваше имя" class="zakaz__pole" id="name" name="name"
+                 required #name="ngModel"
+                 [class]="{'border-danger' : name.invalid && (name.dirty || name.touched), 'text-danger' : name.invalid && (name.dirty || name.touched)}"
+                 [(ngModel)]="formValues.name ">
+
+          <div class="text-danger" *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['required']">
+            Name is required
+          </div>
+        </div>
+
+        <div>
+          <input type="number" placeholder="+375 (__) ___ - __ - __" class="zakaz__pole" id="phone" name="phone"
+                 required #phone="ngModel"
+                 [class]="{'border-danger' : phone.invalid && (phone.dirty || phone.touched), 'text-danger' : phone.invalid && (phone.dirty || phone.touched)}"
+                 [(ngModel)]="formValues.phone">
+          <div class="text-danger" *ngIf="phone.invalid && (phone.dirty || phone.touched) && phone.errors?.['required']">
+            Phone is required
+          </div>
+        </div>
+
+        <div class="action">
+          <button class="btn zakaz__btn" customButton
+                  [customButtonDefaultBgColor]="'linear-gradient(90deg, rgb(113, 8, 30) 0%, rgb(215, 72, 92)'"
+                  [customButtonHoverBgColor]="'linear-gradient(90deg, rgb(215, 72, 92) 0%, rgb(113, 8, 30)'" [disabled]="siForm.invalid" (click)="orderForm(siForm)">Оформить заказ</button>
+        </div>
+      </form>
+      <img src="assets/images/клубника2.png" alt="Strawberry" class="straw-two">
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer__container">
+    <div class="logo footer__logo">
+      <img src="assets/images/logo.png" alt="Logo">
+    </div>
+    <div class="roots">Все права защищены, 2020</div>
+    <div class="footer__inst">
+      <svg class="footer__image" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/>
+      </svg>
+      <div class="inst__text">Мы в инстаграмм</div>
+      <div class="inst__text inst__link">{{footerValues.instagram}}</div>
+    </div>
+    <div class="footer__phone">{{footerValues.phone | customPhone}}</div>
+  </div>
+</footer>
+
+<div class="present" [style.display]="showPresent ? 'flex' : 'none'" *ngIf="cartService.count > 0">
+  <img class="cart" src="assets/images/cart.png" alt="Cart">
+  <div class="present__info">
+    {{cartService.count}} руб.
+    <div class="rectangle"></div>
+  </div>
+  <div class="count-products">{{cartService.amount}}</div>
+</div>

@@ -1,0 +1,16 @@
+<div class="macaroon">
+  <div class="macaroon__image">
+    <img src="assets/images/macaroon/{{product.image}}" alt="Macaroon}">
+  </div>
+  <div class="macaroon__title">{{product.title}}</div>
+  <div class="macaroon__description">
+    <div class="macaroon__price">
+      <div class="macaroon__coll">1 шт.</div>
+      <div>{{product.price | currency: 'RUB':'':'1.2-2'}} руб.</div>
+    </div>
+    <div class="description__action">
+      <button class="btn macaroon__btn" (click)="addProductToCart(product)" customButton>Заказать</button>
+    </div>
+  </div>
+</div>
+
